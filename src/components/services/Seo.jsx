@@ -2,7 +2,7 @@ import React from "react";
 import service5 from "../../assets/images/service/service5.png";
 import bullet from "../../assets/images/icons/Icon Bullet Point.png";
 
-const SEO = () => {
+const Seo = () => {
   const seoItems = [
     "On Page SEO",
     "Off Page SEO",
@@ -51,4 +51,4 @@ const SEO = () => {
   );
 };
 
-export default SEO;
+export default Seo;
