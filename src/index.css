@@ -1,0 +1,85 @@
+/* ================= IMPORT TAILWIND ================= */
+@import "tailwindcss";
+
+/* ================= THEME VARIABLES (TAILWIND v4) ================= */
+@theme {
+  /* -------- Fonts -------- */
+  --font-outfit: "Outfit", sans-serif;
+  --font-supreme: "Inter", sans-serif;
+
+  /* -------- Breakpoints (px-accurate) -------- */
+  --breakpoint-mobile: 0rem; /* 0px */
+  --breakpoint-tablet: 48rem; /* 768px */
+  --breakpoint-laptop: 62rem; /* 992px */
+  --breakpoint-desktop: 100rem; /* 1280px */
+
+  --font-regular: 400; /* Normal / Regular */
+  --font-semibold: 600; /* SemiBold */
+  --font-bold: 700; /* Bold */
+}
+
+/* ================= FONT UTILITIES (IMPORTANT) ================= */
+@layer utilities {
+  .font-outfit {
+    font-family: var(--font-outfit);
+  }
+
+  .font-supreme {
+    font-family: var(--font-supreme);
+  }
+  .regular {
+    font-weight: var(--font-regular); /* 400 */
+  }
+  .semibold {
+    font-weight: var(--font-semibold); /* 600 */
+  }
+  .bold {
+    font-weight: var(--font-bold); /* 700 */
+  }
+}
+
+/* ================= GLOBAL BASE STYLES ================= */
+@layer base {
+  body {
+    @apply font-supreme text-gray-900 bg-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-outfit;
+  }
+
+  p,
+  ul,
+  li,
+  span,
+  link {
+    @apply font-supreme;
+  }
+
+  a {
+    @apply no-underline;
+  }
+}
+
+@layer components {
+  .input-primary {
+    @apply w-full h-[48px] px-4
+      border border-[#99DBD4]
+      bg-[#E5F6F4]
+      focus:outline-none
+      focus:ring-2 focus:ring-[#00A693]
+      focus:bg-white;
+  }
+   .heading-secondary {
+    @apply font-normal text-base tracking-[0.02em];
+  }
+   .submit-btn {
+    @apply font-semibold text-2xl text-center;
+    font-family: "Neue Haas Grotesk Display Pro", sans-serif;
+  }
+}
