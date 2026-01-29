@@ -1,9 +1,9 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
+import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import member1 from "../../assets/images/member/member1.png";
 import member2 from "../../assets/images/member/member2.png";
@@ -11,40 +11,10 @@ import member3 from "../../assets/images/member/member3.png";
 import member4 from "../../assets/images/member/member4.png";
 import member5 from "../../assets/images/member/member5.png";
 
-
-const PrevArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="
-      hidden lg:flex
-      absolute bottom-[-80px] left-1/2 -translate-x-[60px]
-       text-white
-      items-center justify-center 
-      transition z-10
-    "
-  >
-    <IoIosArrowBack />
-  </button>
-);
-
-const NextArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="
-      hidden lg:flex
-      absolute bottom-[-80px] left-1/2 translate-x-[12px]
-        text-white
-      items-center justify-center
-      
-      transition z-10
-    "
-  >
-    <IoIosArrowForward />
-  </button>
-);
-
-
 const ClientTestimonial = () => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
   const clients = [
     {
       name: "Gokarna Shrestha",
@@ -72,7 +42,7 @@ const ClientTestimonial = () => {
       location: "Lalitpur",
       img: member4,
       description:
-        "Now that we have wireframes at hand, we start with content writing for the individual pages with keeping SEO in mind. We start arranging visual elements—like text, images, and shapes—along the way.",
+        "Now that we have wireframes at hand, we start with content writing for the individual pages with keeping SEO in mind.",
     },
     {
       name: "Hari KC",
@@ -83,75 +53,88 @@ const ClientTestimonial = () => {
     },
   ];
 
- const settings = {
-   dots: false,
-   infinite: true,
-   speed: 500,
-   slidesToShow: 3,
-   slidesToScroll: 1,
-   arrows: true,
-   prevArrow: <PrevArrow />,
-   nextArrow: <NextArrow />,
-   centerMode: true,
-   centerPadding: "0px",
-   responsive: [
-     {
-       breakpoint: 1280, // tablet & below
-       settings: {
-         slidesToShow: 2,
-         centerMode: false,
-         arrows: false, // 🔥 disable slick arrows internally
-       },
-     },
-     {
-       breakpoint: 768, // mobile
-       settings: {
-         slidesToShow: 1,
-         centerMode: false,
-         arrows: false,
-       },
-     },
-   ],
- };
-
   return (
-    <section className=" text-white py-25 px-5 lg:px-20 md:px-6 flex flex-col items-center gap-10 md:gap-13 bg-[#001412] ">
-      <div className="text-center ">
-        <p className=" font-semibold text-4xl  md:text-5xl lg:text-6xl tracking-[-0.02em]">
+    <section className="text-white py-24 px-5 md:px-6 lg:px-20 bg-[#001412] flex flex-col items-center gap-10">
+      {/* Heading */}
+      <div className="text-center">
+        <p className="font-semibold text-4xl md:text-5xl lg:text-6xl tracking-[-0.02em]">
           A few words from our clients
         </p>
       </div>
 
-      <div className="w-full  relative ">
-        <Slider {...settings}>
-          {clients.map((client, index) => (
-            <div key={index} className="px-6  flex justify-center ">
-              <div className="bg-[#00211D] p-10  relative flex flex-col justify-between  h-[357px] md:h-[382px] lg:h-[304px] w-full">
-                {/* Description */}
+      <div className="w-full relative">
+        {/* Custom arrows (desktop only) */}
+        <button
+          ref={prevRef}
+          className="hidden lg:flex absolute bottom-[-80px] left-1/2 -translate-x-[60px] text-white z-10"
+        >
+          <IoIosArrowBack />
+        </button>
 
-                <p className="font-normal  text-xl flex-1 tracking-[-0.02em]  line-clamp-4 overflow-hidden">
-                  {client.description}
-                </p>
-                {/* Client Info: Image + Name/Location in one line */}
-                <div className=" flex items-center gap-3 ">
-                  <img
-                    src={client.img}
-                    alt={client.name}
-                    className=" w-12 h-12 md:w-15 md:h-15 rounded-full "
-                  />
-                  <div className="text-left">
-                    <h3 className=" text-2xl tracking-[-0.02em] font-semibold">
-                      {client.name}
-                    </h3>
-                    <p className=" font-normal text-lg tracking-[-0.02em]">
-                      {client.location}
-                    </p>
+        <button
+          ref={nextRef}
+          className="hidden lg:flex absolute bottom-[-80px] left-1/2 translate-x-[12px] text-white z-10"
+        >
+          <IoIosArrowForward />
+        </button>
+
+        <Swiper
+          modules={[Navigation]}
+          onInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+          }}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1280: { slidesPerView: 3 },
+          }}
+        >
+          {clients.map((client, index) => (
+            <SwiperSlide key={index}>
+              <div className="p-4 flex justify-center w-full">
+                {/* CARD */}
+                <div
+                  className="
+                  bg-[#00211D]
+                  p-6 md:p-10
+                  flex flex-col  gap-24
+                  h-[400px]
+                "
+                >
+                  {/* Description */}
+                  <p
+                    className="
+                    font-normal text-xl tracking-[-0.02em]
+                    line-clamp-4
+                  "
+                  >
+                    {client.description}
+                  </p>
+
+                  {/* Client Info */}
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={client.img}
+                      alt={client.name}
+                      className="w-12 h-12 md:w-15 md:h-15 rounded-full"
+                    />
+                    <div>
+                      <h3 className="text-2xl font-semibold tracking-[-0.02em]">
+                        {client.name}
+                      </h3>
+                      <p className="text-lg tracking-[-0.02em]">
+                        {client.location}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </Slider>
+        </Swiper>
       </div>
     </section>
   );

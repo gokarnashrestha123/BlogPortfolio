@@ -46,7 +46,7 @@ const SelectedWorks = ({ limit }) => {
             </div>
 
             {/* Content */}
-            <div className="mt-4 sm:mt-5">
+            <div className="flex flex-col gap-5 md:gap-8 mt-5">
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <h3 className="text-white font-semibold text-4xl tracking-[-0.02em]">
                   {item.title}
