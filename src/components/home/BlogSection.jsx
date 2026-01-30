@@ -21,10 +21,10 @@ const BlogSection = () => {
       return () => window.removeEventListener("resize", updateLimit);
     }, []);
   return (
-    <div className="w-full px-5  py-20  md:px-8 md:py-24 lg:px-20">
+    <div className="w-full px-5 py-20  md:px-8 md:py-24 lg:px-20">
       {/* Header */}
       <div className=" flex flex-col sm:flex-row gap-5 px-6 md:justify-between items-center">
-        <h2 className="text-white text-center font-semibold text-5xl md:text-6xl tracking-[-0.02em]">
+        <h2 className="text-white  font-semibold text-5xl md:text-6xl tracking-[-0.02em]">
           Latest Articles
         </h2>
 

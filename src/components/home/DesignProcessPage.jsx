@@ -92,7 +92,7 @@ const DesignProcessPage = () => {
 
                   {/* Card */}
                   <div
-                    className="bg-[#008576]  py-7 px-5 md:py-10 md:px-8  flex-1 flex flex-col gap-4 md:gap-3 ml-8 lg:ml-20"
+                    className="bg-[#008576]   py-7 px-5 md:py-10 md:px-8  flex-1 flex flex-col gap-4 md:gap-3 ml-9 lg:ml-20"
                   >
                     {/* Mobile/Tablet: title inside card */}
                     <h3 className="text-3xl font-semibold lg:hidden  text-left  tracking-[-0.02em]">
