@@ -49,7 +49,7 @@ const DesignProcessPage = () => {
       <div className="max-w-6xl mx-auto  flex  flex-col gap-25 ">
         {/* Header */}
         <div className="flex justify-center ">
-          <div className="flex flex-col items-center gap-3 w-full max-w-[906px] text-center">
+          <div className="flex flex-col items-center gap-3 w-full text-center">
             <p className="text-[#33B8A9] text-xl font-bold  tracking-[-0.02em]">
               Our Design Process
             </p>
