@@ -40,12 +40,12 @@ const BlogCart = ({ limit, variant = "dark" }) => {
 
   return (
     <section className={`py-24 ${isDark ? "" : "bg-white"}`}>
-      <div className="max-w-[1640px] mx-auto">
+      <div className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {paginatedBlogs.map((blog, index) => (
             <article
               key={index}
-              className={`flex flex-col h-full transition-transform duration-300 hover:scale-[1.02]
+              className={`flex flex-col h-auto transition-transform duration-300 hover:scale-[1.02]
                 ${isDark ? "bg-[#00211D]" : "bg-white border border-gray-200"}`}
             >
               <img

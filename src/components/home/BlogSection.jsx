@@ -28,8 +28,14 @@ const BlogSection = () => {
           Latest Articles
         </h2>
 
-        <button className="border border-[#008576] text-white py-4 px-12 rounded hover:bg-[#008576] transition">
-          <p className="font-bold text-lg tracking-[-0.02em]">View All</p>
+        <button className="relative overflow-hidden border border-[#008576] text-[#008576] py-4 px-12 rounded group">
+          {/* Hover background layer */}
+          <span className="absolute inset-0 bg-[#008576] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
+
+          {/* Button text */}
+          <p className="relative z-10 font-bold text-lg tracking-[-0.02em] group-hover:text-white transition-colors duration-300">
+            View All
+          </p>
         </button>
       </div>
 
