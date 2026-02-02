@@ -21,9 +21,9 @@ const HeroSection = () => {
         {/* Heading */}
         <h1
           className="
-     font-bold text-white text-center 
-    text-[40px] leading-[52px] tracking-[-0.02em]
-    md:font-semibold md:text-[64px] md:leading-[83px] md:tracking-[-0.02em]
+     font-bold md:text-semibold text-white text-center 
+    text-4xl  tracking-[-0.02em]
+     md:text-6xl
     "
         >
           We Build High-converting Websites
@@ -38,8 +38,7 @@ const HeroSection = () => {
                        hover:bg-teal-600 transition"
           >
             <p
-              className=" font-bold text-[18px] tracking-[-0.02em]
-                     leading-[23px]"
+              className=" font-bold text-lg tracking-[-0.02em]"
             >
               Book a Call
             </p>
@@ -51,8 +50,7 @@ const HeroSection = () => {
                        hover:bg-teal-600 transition"
           >
             <p
-              className=" font-bold text-[18px] tracking-[-0.02em]
-                     leading-[23px]"
+              className=" font-bold text-lg tracking-[-0.02em]"
             >
               See Our Works
             </p>
